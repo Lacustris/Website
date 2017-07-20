@@ -1,0 +1,94 @@
+@mixin dialog__inner-border {
+	border-bottom: 1px solid lighten($brand-secondary, 20%);
+}
+
+// Dialogs
+.dialog {
+	width: 100vw;
+	height: 100vh;
+
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 9999;
+
+	background-color: rgba(0,0,0,0.3);
+
+	display: none;
+
+	&__screen {
+		background-color: #f5f8fa;
+		width: $dialog-width;
+		//max-height: 30%;
+		position: fixed;
+		left: 50%;
+		top: 40%;
+		margin-left: $dialog-width / -2;
+		border-radius: $dialog-border-radius;
+		box-shadow: 2px 2px 1px 1px rgba(0,0,0,0.3);
+		border: 1px solid $brand-secondary;
+	}
+
+	&__title {
+		text-align: center;
+		padding: $dialog-padding;
+		@include dialog__inner-border;
+		font-weight: bolder;
+		font-size: 1.1em;
+	}
+
+	&__body {
+		padding: $dialog-padding;
+		@include dialog__inner-border;
+		height: auto;
+	}
+
+	&__actions {
+		padding: $dialog-padding;
+		text-align: right;
+	}
+
+	&__image-previews {
+		height: 150px;
+		max-height: 150px;
+		//overflow: none;
+
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__image-preview {
+		width: 100px;
+		height: 100px;
+		border: 1px solid $brand-secondary;
+		margin-right: 10px;
+		margin-bottom: 10px;
+
+		&--selected {
+			border-color: $brand-primary;
+		}
+
+		img {
+			max-width: 100%;
+			max-height: 100%;
+		}
+	}
+
+	&__image-settings {
+		margin-top: 10px;
+	}
+
+	&__row {
+		margin-bottom: 10px;
+	}
+}
+
+.dialog--images {
+	.dialog__screen {
+		@media screen and (min-width: $grid-float-breakpoint-max+1) {
+			width: $dialog-width-large;
+			top: 10%;
+			margin-left: $dialog-width-large / -2;
+		}
+	}
+}

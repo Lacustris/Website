@@ -1,0 +1,84 @@
+.navbar {
+  margin-left: -15px; // Make it screen wide
+  margin-right: -15px;
+
+  .navbar-brand {
+    display: none;
+  }
+
+  &.affix {
+    @extend .navbar-fixed-top; // Inherit the behaviour of the sticky nav bar
+
+    @media screen and (max-width: $grid-float-breakpoint-max) {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
+    .navbar-brand {
+      display: inline-block;
+      color: $brand-tertiary;
+    }
+
+    @media screen and(min-width: $grid-float-breakpoint-max+1) {
+      .navbar-header {
+        float: right;
+      }
+    }
+  }
+}
+
+.nav .open {
+	> a, > a:hover, > a:focus {
+		background-color: $brand-secondary;
+	}
+}
+
+// Sidedrop menus -- Was this deprecated?
+.dropside-menu {
+	@extend .dropdown-menu;
+	top: calc(100% - 40px);
+	left: 100%;
+}
+
+.dropside-backdrop {
+	@extend .dropdown-backdrop;
+}
+
+
+// Pagination //
+.pagination {
+	height: 30px;
+	display: flex;
+	justify-content: center;
+
+	&__link {
+		height: 30px;
+		width: 30px;
+		border: 1px solid $brand-secondary;
+		border-left-width: 0;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		color: $brand-primary;
+		cursor: pointer;
+
+		&:first-child {
+			border-left-width: 1px;
+			border-top-left-radius: 5px;
+			border-bottom-left-radius: 5px;
+		}
+
+		&:last-child {
+			border-top-right-radius: 5px;
+			border-bottom-right-radius: 5px;
+		}
+
+		&:hover {
+			background-color: darken($brand-tertiary, 20%);
+		}
+
+		&--current {
+			background-color: darken($brand-tertiary, 10%);
+		}
+	}
+}

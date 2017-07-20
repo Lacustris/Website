@@ -1,0 +1,35 @@
+{
+  "private": true,
+  "scripts": {
+    "webpack": "cross-env NODE_ENV=development webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "dev": "cross-env NODE_ENV=development webpack --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "hmr": "cross-env NODE_ENV=development webpack-dev-server --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "production": "cross-env NODE_ENV=production webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "serve": "php artisan serve",
+    "serve:dev": "concurrently 'npm run serve' 'npm run dev'"
+  },
+  "devDependencies": {
+    "axios": "^0.16.1",
+    "bootstrap-sass": "^3.3.7",
+    "concurrently": "^3.4.0",
+    "eslint": "^3.19.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "font-awesome": "github:fortawesome/Font-Awesome",
+    "jquery": "^3.2.1",
+    "laravel-mix": "^0.10.0",
+    "lodash": "^4.17.4",
+    "node-sass": "^4.5.2",
+    "nodemon": "^1.11.0"
+  },
+  "name": "lacustris",
+  "version": "1.0.0",
+  "main": "public/index.php",
+  "directories": {
+    "test": "tests"
+  },
+  "author": "Justin Wies",
+  "license": "MIT",
+  "description": ""
+}

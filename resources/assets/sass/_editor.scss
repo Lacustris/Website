@@ -1,0 +1,92 @@
+.editor {
+
+	&__controls {
+		min-height: 40px;
+		border-radius: $border-radius-base;
+		margin-bottom: 10px;
+
+		display: flex;
+		flex-wrap: wrap;
+		flex-shrink: 0;
+	}
+
+	&__control-group {
+		display: inline-flex;
+		justify-content: space-around;
+		flex-wrap: wrap;
+		flex-shrink: 0;
+
+		margin-bottom: 10px;
+		margin-right: 10px;
+		border-radius: $border-radius-base;
+		border: 1px solid $brand-secondary;
+	}
+
+	&__textarea {
+		border-radius: $border-radius-base;
+		border: 1px solid $brand-secondary;
+		background-color: white;
+		padding: 10px;
+		min-height: 200px;
+		@include form-control-focus(); // Inherit Bootstrap's form outline
+	}
+
+	&__button {
+		display: inline-flex;
+		justify-content: space-around;
+		align-items: center;
+
+		height: 40px;
+		width: 40px;
+
+		background-color: #eee;
+		color: $brand-secondary;
+
+		border-right: 1px solid lighten($brand-secondary, 40%);
+
+		&:hover, &:focus {
+			background-color: #ddd;
+			color: $brand-secondary;
+			text-decoration: none;
+		}
+
+		&:first-child {
+			border-top-left-radius: $border-radius-base;
+			border-bottom-left-radius: $border-radius-base;
+		}
+
+		&:last-child {
+			border-top-right-radius: $border-radius-base;
+			border-bottom-right-radius: $border-radius-base;
+			border-right-width: 0;
+		}
+	}
+
+	&__target {
+		display: none;
+	}
+
+	&__info {
+		height: 40px;
+		border-radius: $border-radius-base;
+		border: 1px solid $brand-secondary;
+		background-color: white;
+
+		display: none;
+
+		&--active {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			
+		}
+
+		& > * {
+			padding: 5px;
+		}
+	}
+
+	&__help {
+		display: inline-block;
+	}
+}
