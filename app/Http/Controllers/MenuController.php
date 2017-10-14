@@ -52,7 +52,14 @@ class MenuController extends Controller
 		$parent = $request->parent;
 		$parent_id = ($parent == 'root') ? null : $parent;
 		$order = Menu::availableOrder($parent_id);
-		$target = 'dynamic:'.$request->page;
+		if($request->type == 'page') {
+			$target = 'dynamic:'.$request->page;
+		} elseif($request->type == 'calendar') {
+			$target = 'calendar';
+		} else {
+			$target = '#';
+		}
+		
 
 		Menu::create([
 			'name_nl' 	=> $request->name_nl,

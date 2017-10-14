@@ -7,14 +7,6 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-	/**
-	 * Setup permissions for the controller. Minimum required permission is board member,
-	 * except for the show() method, as it is public
-	 */
-	public function __construct()
-	{
-		$this->middleware(['auth', 'permissions:8'], ['except' => 'show']);
-	}
     /**
      * Display a listing of the resource.
      *
@@ -69,8 +61,17 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        $data['post'] = $post;
+
+		return view('posts.show', $data);
     }
+
+	public function recent()
+	{
+		$data['posts'] = Post::where('language', \App::getLocale())->orderBy('created_at', 'desc')->paginate(3);
+
+		return view('posts.recent', $data);
+	}
 
     /**
      * Show the form for editing the specified resource.
@@ -94,7 +95,18 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+         $this->validate($request, Post::validationRules);
+
+		$user = \Auth::user();
+		
+		$post->title 		= $request->title;
+		$post->slug 		= Post::processSlug($request->slug);
+		$post->content 		= Post::processContent($request->content);
+		$post->author 		= $user->id; // Do we want this?
+		$post->language 	= $request->language;
+		$post->save();
+
+		return redirect('/admin/posts');
     }
 
     /**

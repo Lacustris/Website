@@ -36,3 +36,7 @@
 	@endforeach
 
 </ul>
+
+<ul class="nav navbar-nav navbar-right">
+	<li>@include('layouts.partials.language')</li>
+</ul>

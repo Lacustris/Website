@@ -16,15 +16,15 @@
 	<div class="row">
 
 		<div class="col-md-2">
-			{{ __( 'admin.postSlug' ) }}
+			{{ __( 'admin.slug' ) }}
 		</div>
 
 		<div class="col-md-2">
-			{{ __( 'admin.postTitle' ) }}
+			{{ __( 'admin.title' ) }}
 		</div>
 
 		<div class="col-md-3">
-			{{ __( 'admin.postContents' ) }}
+			{{ __( 'admin.contents' ) }}
 		</div>
 
 		<div class="col-md-1">

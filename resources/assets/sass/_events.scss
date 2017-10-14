@@ -1,0 +1,141 @@
+.event {
+	&--agenda {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+
+		.event__overview {
+			display: flex;
+			flex-direction: row;
+		}
+
+		.event__date {
+			font-weight: bold;
+			color: $brand-primary;
+		}
+
+		.event__time {
+			flex-grow: 0;
+			flex-shrink: 0;
+			width: 50px;
+		}
+	}
+	
+	&__descriptor {
+		font-weight: bold;
+	}
+}
+
+@mixin calendar__border($location: false) {
+	@if($location != false) {
+		border-#{$location}: 1px solid $brand-secondary;
+	}
+	@if($location == false) {border: 1px solid $brand-secondary;}
+}
+
+.calendar {
+	&__body {
+		@include calendar__border();
+		background: $brand-secondary;
+		border-top-width: 0;
+	}
+
+	&__week {
+		width: 100%;
+		display: flex;
+		@include calendar__border("top");
+
+		&:last-child {
+			//@include calendar__border("bottom");
+		}
+
+		&--heading {
+			background-color: $brand-secondary;
+		}
+	}
+
+	&__day {
+		flex-grow: 1;
+		max-width: (100%/7);
+		height: 100px;
+		padding: 5px;
+		text-align: right;
+		background-color: $brand-tertiary;
+
+		@include calendar__border("left");
+
+		&:first-child {
+			border-left-width: 0;
+		}
+
+		&:first-child, &:last-child { // Colour weekend days a different background-color
+			background-color: darken($brand-tertiary, 5%);
+		}
+
+		&--previous {
+			color: lighten($brand-secondary, 50%);
+		}
+
+		&--empty {
+			display: none;
+			border-width: 0;
+			background-color: initial;
+			&:first-child, &:last-child { // Colour weekend days a different background-color
+				background-color: inherit;
+			}
+		}
+
+		&--heading {
+			height: 2em;
+			font-weight: bold;
+			text-align: center;
+
+			color: $brand-tertiary;
+			background-color: $brand-secondary;
+
+			&:first-child, &:last-child { // Colour weekend days a different background-color
+				background-color: inherit;
+			}
+
+			&:last-child {
+				@include calendar__border("right");
+			}
+
+			&:first-child {
+				@include calendar__border("left");
+			}
+		}
+	}
+
+	&__event {
+		display: block;
+		text-align: left;
+		width: 100%;
+	}
+
+	&__navigation {
+		line-height: 2em;
+		display: flex;
+		justify-content: space-between;
+		padding: 10px;
+
+		@include calendar__border();
+		border-bottom-width: 0;
+
+		border-top-left-radius: 10px;
+		border-top-right-radius: 10px;
+
+		background-color: $brand-primary;
+		color: $brand-tertiary;
+
+		a {
+			color: $brand-secondary;
+			font-size: 1.2em;
+		}
+	}
+
+	&__date {
+		font-weight: bold;
+		font-size: 2em;
+	}
+}

@@ -44,14 +44,23 @@ class Menu extends Model
 			case 'dynamic':
 				return '/page/'.$target[1];
 				break;
+			case 'calendar':
+				return '/calendar';
+				break;
 			default:
 				return '/';
 		}
 	}
 
+	public function getType()
+	{
+		return explode(':', $this->target)[0];
+	}
+
 	public function name()
 	{
-		return $this->name_nl;
+
+		return $this->{'name_'.\App::getLocale()};
 	}
 
 	public function updateOrder($parent_id)

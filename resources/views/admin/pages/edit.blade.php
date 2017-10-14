@@ -26,7 +26,7 @@
 
 		<div class="form-group">
 			<label for="title_nl" class="control-label">
-				{{ __( 'admin.pageTitle' ) }} NL
+				{{ __( 'admin.title' ) }} NL
 			</label>
 			
 			<input id="title_nl" type="text" class="form-control" name="title_nl" value="{{ $page->title_nl }}" required>
@@ -34,7 +34,7 @@
 
 		<div class="form-group">
 			<label for="title_en" class="control-label">
-				{{ __( 'admin.pageTitle' ) }} EN
+				{{ __( 'admin.title' ) }} EN
 			</label>
 			
 			<input id="title_en" type="text" class="form-control" name="title_en" value="{{ $page->title_en }}" required>
@@ -46,7 +46,7 @@
 
 		<div class="form-group">
 			<label for="slug" class="control-label">
-				{{ __( 'admin.pageSlug' ) }}
+				{{ __( 'admin.slug' ) }}
 			</label>
 			
 			<input id="slug" type="text" class="form-control" name="slug" value="{{ $page->slug }}" required>
@@ -58,7 +58,7 @@
 
 		<div class="form-group">
 			<label for="content_nl">
-				{{ __( 'admin.pageContents' ) }} NL
+				{{ __( 'admin.contents' ) }} NL
 			</label>
 
 			@include('layouts.editors.text', [ 'content' => $page->contents_nl, 'id' => 'content_nl' ])
@@ -70,7 +70,7 @@
 
 		<div class="form-group">
 			<label for="content_en">
-				{{ __( 'admin.pageContents' ) }} EN
+				{{ __( 'admin.contents' ) }} EN
 			</label>
 
 			@include('layouts.editors.text', [ 'content' => $page->contents_en, 'id' => 'content_en' ])

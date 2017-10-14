@@ -10,7 +10,7 @@
 
 <h1>{{ __( 'admin.menuAdmin' ) }} - {{ __( 'admin.new' ) }}</h1>
 
-<form class="form-horizontal" role="form" method="POST" action="/admin/menu/store">
+<form class="form-horizontal" role="form" method="POST" action="/admin/menu/store" data-needs="type">
 {{ csrf_field() }}
 
 <div class="row">
@@ -53,6 +53,18 @@
 		</div>
 
 		<div class="form-group">
+			<label for="type" class="control-label">
+				{{ __( 'admin.menuType' ) }}
+			</label>
+
+			<select id="type" name="type" class="form-control" data-action="select-menu-type" required>
+				<option value="false" disabled selected>---</option>
+				<option value="page">{{ __('admin.menuTypePage') }}</option>
+				<option value="calendar">{{ __('admin.menuTypeCalendar') }}</option>
+			</select>
+		</div>
+
+		<div class="form-group" style="display: none;" data-menu-type="page">
 			<label for="page" class="control-label">
 				{{ __( 'admin.menuPage' ) }}
 			</label>

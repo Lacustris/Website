@@ -12,7 +12,7 @@
 
 @include('layouts.error')
 
-<form class="form-horizontal" role="form" method="POST" action="/admin/posts/update" data-editor="true">
+<form class="form-horizontal" role="form" method="POST" action="/admin/posts/update/{{ $post->slug }}" data-editor="true">
 
 	<div class="col-md-12">
 		<button type="submit" class="btn btn-primary" data-editor="true">
@@ -26,10 +26,10 @@
 
 		<div class="form-group">
 			<label for="title" class="control-label">
-				{{ __( 'admin.postTitle' ) }}
+				{{ __( 'admin.title' ) }}
 			</label>
 			
-			<input id="title" type="text" class="form-control" name="title" value="{{ $post->title }}" required>
+			<input id="title" type="text" class="form-control" name="title" value="{{ old('title') !== null ? old('title') : $post->title }}" required>
 		</div>
 
 	</div>
@@ -38,10 +38,10 @@
 
 		<div class="form-group">
 			<label for="slug" class="control-label">
-				{{ __( 'admin.postSlug' ) }}
+				{{ __( 'admin.slug' ) }}
 			</label>
 			
-			<input id="slug" type="text" class="form-control" name="slug" value="{{ $post->slug }}" required>
+			<input id="slug" type="text" class="form-control" name="slug" value="{{ old('slug') !== null ? old('slug') : $post->slug }}" required>
 		</div>
 
 		<div class="form-group">
@@ -61,10 +61,10 @@
 
 		<div class="form-group">
 			<label for="content_nl">
-				{{ __( 'admin.postContents' ) }}
+				{{ __( 'admin.contents' ) }}
 			</label>
 
-			@include('layouts.editors.text', [ 'content' => $post->content, 'id' => 'content' ])
+			@include('layouts.editors.text', [ 'content' => old('content') !== null ? old('content') : $post->content, 'id' => 'content' ])
 		</div>
 
 	</div>

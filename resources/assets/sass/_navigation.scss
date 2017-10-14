@@ -33,27 +33,43 @@
 	}
 }
 
-// Sidedrop menus -- Was this deprecated?
-.dropside-menu {
-	@extend .dropdown-menu;
-	top: calc(100% - 40px);
-	left: 100%;
+.navbar-toggle {
+    .icon-bar {
+        transition: 400ms ease-in-out;
+        background-color: #fff;
+        position: relative;
+        width: 24px;
+        height: 2px;
+    }
+    .icon-bar:last-child {
+        transform: rotate(-45deg);
+        top: -12px;
+    }
+    .icon-bar:nth-child(2) {
+        transform: rotate(45deg);
+        top: 0;
+    }
+    .icon-bar:nth-child(3) {
+        opacity: 0;
+    }
+    &.collapsed {
+        .icon-bar {
+            transform: rotate(0deg);        
+            top: 0;
+            opacity: 1;
+        }
+    }
 }
-
-.dropside-backdrop {
-	@extend .dropdown-backdrop;
-}
-
 
 // Pagination //
 .pagination {
-	height: 30px;
+	height: 40px;
 	display: flex;
 	justify-content: center;
 
 	&__link {
-		height: 30px;
-		width: 30px;
+		height: 40px;
+		width: 40px;
 		border: 1px solid $brand-secondary;
 		border-left-width: 0;
 		display: flex;
@@ -79,6 +95,7 @@
 
 		&--current {
 			background-color: darken($brand-tertiary, 10%);
+			cursor: unset;
 		}
 	}
 }

@@ -14,15 +14,19 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-      Schema::defaultStringLength(191);
+		Schema::defaultStringLength(191);
 
-	  \View::composer('layouts.mainMenu', function($view) {
-		  $view->with('menuItems', \App\Menu::getMain());
-	  });
+		\View::composer('layouts.mainMenu', function($view) {
+			$view->with('menuItems', \App\Menu::getMain());
+		});
 
-	  \View::composer('layouts.userMenu', function($view) {
-		  $view->with('user', \Auth::user());
-	  });
+		\View::composer('layouts.userMenu', function($view) {
+			$view->with('user', \Auth::user());
+		});
+
+		\View::composer('layouts.partials.agenda', function($view) {
+			$view->with('events', \App\Event::upcoming(3));
+		});
     }
 
     /**

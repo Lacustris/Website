@@ -27,6 +27,12 @@ $(function() {
 			window.location.href = href; // assign it to the current window
 		}
 	});
+
+	$('.navbar').on('show.bs.collapse', function() {
+		$('.fa.fa-bars').removeClass('fa-bars').addClass('fa-times')
+	}).on('hide.bs.collapse', function() {
+		$('.fa.fa-times').addClass('fa-bars').removeClass('fa-times')
+	});
 });
 
 /**

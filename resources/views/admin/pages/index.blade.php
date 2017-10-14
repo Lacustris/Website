@@ -16,19 +16,19 @@
 	<div class="row">
 
 		<div class="col-md-2">
-			{{ __( 'admin.pageSlug' ) }}
+			{{ __( 'admin.slug' ) }}
 		</div>
 
 		<div class="col-md-2">
-			{{ __( 'admin.pageTitle' ) }}
+			{{ __( 'admin.title' ) }}
 		</div>
 
 		<div class="col-md-3">
-			{{ __( 'admin.pageContents' ) }} NL
+			{{ __( 'admin.contents' ) }} NL
 		</div>
 
 		<div class="col-md-3">
-			{{ __( 'admin.pageContents' ) }} EN
+			{{ __( 'admin.contents' ) }} EN
 		</div>
 
 		<div class="col-md-2">

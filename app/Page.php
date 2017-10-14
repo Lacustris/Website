@@ -31,14 +31,14 @@ class Page extends TextModel
 		'content_en'	=> 'required',
 	];
 	
-	public function title() // TODO: Localise!
+	public function title()
 	{
-		return $this->title_nl;
+		return $this->{'title_' . \App::getLocale()};
 	}
 
-	public function contents() // TODO: Localise!
+	public function contents()
 	{
-		return $this->contents_nl;
+		return $this->{'contents_' . \App::getLocale()};
 	}
 
 	public static function processContent($content)

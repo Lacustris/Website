@@ -26,7 +26,7 @@
 
 		<div class="form-group">
 			<label for="title" class="control-label">
-				{{ __( 'admin.postTitle' ) }}
+				{{ __( 'admin.title' ) }}
 			</label>
 			
 			<input id="title" type="text" class="form-control" name="title" value="{{ old('title_nl') }}" required>
@@ -38,7 +38,7 @@
 
 		<div class="form-group">
 			<label for="slug" class="control-label">
-				{{ __( 'admin.postSlug' ) }}
+				{{ __( 'admin.slug' ) }}
 			</label>
 			
 			<input id="slug" type="text" class="form-control" name="slug" value="{{ old('slug') }}" required>
@@ -60,8 +60,8 @@
 	<div class="col-md-12">
 
 		<div class="form-group">
-			<label for="content_nl">
-				{{ __( 'admin.postContents' ) }}
+			<label for="content">
+				{{ __( 'admin.contents' ) }}
 			</label>
 
 			@include('layouts.editors.text', [ 'content' => old('content'), 'id' => 'content' ])

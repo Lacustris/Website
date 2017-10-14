@@ -36,4 +36,14 @@ class LoginController extends Controller
     {
         $this->middleware('guest', ['except' => 'logout']);
     }
+
+	/**
+     * Override the showLoginForm() function of the Standard controller, as the form is always visible on the homepage.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showLoginForm()
+    {
+        return redirect('/');
+    }
 }

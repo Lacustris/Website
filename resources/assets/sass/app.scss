@@ -17,12 +17,11 @@
 @import "admin";
 @import "dialog";
 @import "editor";
+@import "carousel";
+@import "posts";
+@import "events";
 
 // TODO: Categorise this
 button, .btn {
   text-transform: capitalize;
-}
-
-img {
-	max-width: 75vw;
 }

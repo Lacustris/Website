@@ -53,6 +53,17 @@
 		</div>
 
 		<div class="form-group">
+			<label for="type" class="control-label">
+				{{ __( 'admin.menuType' ) }}
+			</label>
+
+			<select id="type" name="type" class="form-control" data-action="select-menu-type" required>
+				<option value="page"{{ $item->getType() == 'dynamic' ? ' selected' : '' }}>{{ __('admin.menuTypePage') }}</option>
+				<option value="calendar"{{ $item->getType() == 'calendar' ? ' selected' : '' }}>{{ __('admin.menuTypeCalendar') }}</option>
+			</select>
+		</div>
+
+		<div class="form-group"{{ $item->getType() == 'dynamic' ? ' style="display: none;"' : '' }} data-menu-type="page">
 			<label for="page" class="control-label">
 				{{ __( 'admin.menuPage' ) }}
 			</label>

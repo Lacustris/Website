@@ -33,7 +33,7 @@
 		</div>
 		<div class="editor__control-group">
 			<a href="#" class="editor__button" data-command="insertOrderedList" data-toggle="editor-info" data-info="{{ __('editor.orderedList') }}"><i class="fa fa-list-ol"></i></a>
-			<a href="#" class="editor__button" data-command="insertUnorderedList" data-toggle="editor-info" data-info="{{ __('editor.unordredList') }}"><i class="fa fa-list-ul"></i></a>
+			<a href="#" class="editor__button" data-command="insertUnorderedList" data-toggle="editor-info" data-info="{{ __('editor.unorderedList') }}"><i class="fa fa-list-ul"></i></a>
 		</div>
 		<div class="editor__control-group">
 			<a href="#" class="editor__button" data-command="insertimage" data-toggle="editor-info" data-info="{{ __('editor.image') }}"><i class="fa fa-image"></i></a>

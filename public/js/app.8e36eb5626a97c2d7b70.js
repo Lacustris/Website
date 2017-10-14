@@ -9,6 +9,7 @@ webpackJsonp([0],{
 // Require specific files
 
 
+// Event handling
 $(function () {
 	// Delete
 	$('[data-action=delete]').on('click', function () {
@@ -23,6 +24,15 @@ $(function () {
 		});
 	});
 
+	// Validate URLs
+	$('[data-action=validate-url]').on('blur', function () {
+		var url = $(this).val();
+
+		if (url.substring(0, 3) != 'http') {
+			$(this).val('http://' + url);
+		}
+	});
+
 	// Admin to top scroller
 	$(document).on('scroll', function () {
 		if ($('body').scrollTop() > 100) {
@@ -30,6 +40,24 @@ $(function () {
 		} else {
 			$('.admin-page__to-top').hide('slow');
 		}
+	});
+
+	// Handling forms with required select fields
+	$('[data-needs]').on('submit', function (e) {
+		var needs = $(this).data('needs');
+
+		if ($('#' + needs).val() == "false") {
+			e.preventDefault();
+		}
+	});
+
+	// Selection of menu types
+	$('[data-action=select-menu-type]').on('change', function () {
+		$('[data-menu-type]').hide('fast');
+
+		var value = $(this).val();
+
+		$('[data-menu-type=' + value + ']').show('fast');
 	});
 });
 
@@ -43,13 +71,20 @@ function Delete(id) {
 /***/ "./resources/assets/js/app.js":
 /***/ (function(module, exports, __webpack_require__) {
 
-// Require vendor dependencies
+/* WEBPACK VAR INJECTION */(function($) {// Require vendor dependencies
 __webpack_require__("./resources/assets/js/bootstrap.js");
 
 // Require custom JS
 __webpack_require__("./resources/assets/js/menu.js");
 __webpack_require__("./resources/assets/js/admin.js");
 __webpack_require__("./resources/assets/js/editor.js");
+__webpack_require__("./resources/assets/js/carousel.js");
+
+$(function () {
+  // Check if we want this everywhere or only on the pages where it's used
+  $('[data-toggle="tooltip"]').tooltip();
+});
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("./node_modules/jquery/dist/jquery.js")))
 
 /***/ }),
 
@@ -98,6 +133,63 @@ __webpack_require__("./node_modules/bootstrap-sass/assets/javascripts/bootstrap.
 
 /***/ }),
 
+/***/ "./resources/assets/js/carousel.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function($) {Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core__ = __webpack_require__("./resources/assets/js/core.js");
+
+
+$(function () {
+	Init();
+
+	$('[data-action=carousel-goto').on('click', function () {
+		window.location.href = $(this).data('carousel-target');
+	});
+});
+
+function Init() {
+	var carousels = $('[data-carousel]');
+	if (carousels.length == 1) {
+		var origin = carousels.data('carousel-origin');
+		GetUrls(origin, carousels);
+	} else {
+		// maybe soon
+	}
+}
+
+function GetUrls(origin, elem) {
+	$.get('/media/' + origin, null, function (result) {
+		if (result) {
+			SetImage(elem, result);
+
+			setInterval(SetImage, 5000, elem, result);
+		}
+	});
+
+	return null;
+}
+
+function SetImage(elem, images) {
+	var target = elem.find('.carousel__image');
+
+	target.addClass('carousel__image--changing');
+
+	setTimeout(function () {
+		var index = __WEBPACK_IMPORTED_MODULE_0__core__["a" /* default */].randomInt(0, images.length);
+
+		target.attr('src', '/storage/' + images[index]['file']);
+		target.attr('alt', images[index]['alt']);
+		target.data('carousel-target', images[index]['url']);
+
+		target.removeClass('carousel__image--changing');
+	}, 1000);
+}
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__("./node_modules/jquery/dist/jquery.js")))
+
+/***/ }),
+
 /***/ "./resources/assets/js/core.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -128,9 +220,16 @@ function WindowHeight() {
   return res;
 }
 
+function RandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+}
+
 /* harmony default export */ __webpack_exports__["a"] = ({
   windowWidth: WindowWidth,
-  windowHeight: WindowHeight
+  windowHeight: WindowHeight,
+  randomInt: RandomInt
 });
 
 /***/ }),
@@ -438,6 +537,12 @@ $(function () {
 			var href = $(this)[0].href; // Retrieve the url of the a element
 			window.location.href = href; // assign it to the current window
 		}
+	});
+
+	$('.navbar').on('show.bs.collapse', function () {
+		$('.fa.fa-bars').removeClass('fa-bars').addClass('fa-times');
+	}).on('hide.bs.collapse', function () {
+		$('.fa.fa-times').addClass('fa-bars').removeClass('fa-times');
 	});
 });
 

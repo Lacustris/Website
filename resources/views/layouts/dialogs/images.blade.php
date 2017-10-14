@@ -16,7 +16,7 @@
 						<input name="image" type="file" class="form-control dialog__upload-field" accept="image/*">
 					</div>
 					<div class="col-md-3">
-						<button class="btn btn-default dialog__image-upload">Upload</button>
+						<button class="btn btn-default dialog__image-upload">{{ __( 'general.upload' ) }}</button>
 					</div> 
 				</div>
 			</form>

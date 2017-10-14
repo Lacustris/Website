@@ -13,8 +13,8 @@ return [
     |
     */
 
-    'failed' => 'These credentials do not match our records.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'failed' 	=> 'These credentials do not match our records.',
+    'throttle' 	=> 'Too many login attempts. Please try again in :seconds seconds.',
 
     /*
     |--------------------------------------------------------------------------
@@ -25,10 +25,13 @@ return [
     |
     */
 
-    'login' => 'login',
-    'logout' => 'logout',
-    'remember' => 'Remember Me',
-    'forgotPassword' => 'Forgot Your Password?',
-
+    'login' 			=> 'login',
+    'logout' 			=> 'logout',
+    'remember' 			=> 'Remember Me',
+    'forgotPassword' 	=> 'Forgot Your Password?',
+	'loggedInAs' 		=> 'You\'re logged in as :name',
+	'sendResetLink' 	=> 'Send Password Reset Link',
+	'resetPassword' 	=> 'Reset Password',
+	'passwordConfirm' 	=> 'Confirm Password',
 
 ];

@@ -41,4 +41,6 @@ Things that should still be done (in no particularly useful order):
 
 </div>
 
+{{ Session::get('locale') }}
+
 @endsection

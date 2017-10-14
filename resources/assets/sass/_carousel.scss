@@ -1,0 +1,17 @@
+.carousel {
+	width: 100%;
+	height: 100px;
+	display: flex;
+	justify-content: center;
+
+	&__image {
+		height: 100%;
+		cursor: pointer;
+
+		transition: opacity 1s ease-in-out;
+
+		&--changing {
+			opacity: 0;
+		}
+	}
+}

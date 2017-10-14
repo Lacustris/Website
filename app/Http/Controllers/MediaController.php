@@ -15,7 +15,7 @@ class MediaController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth'); // TODO: Make it admin only or something
+       // $this->middleware('auth'); // TODO: Make it admin only or something... Maybe not due to the sponsors and stuff
     }
 
     public function index()
@@ -52,12 +52,16 @@ class MediaController extends Controller
 		$data['page'] 	= \Request::get('page');
 		$data['pages'] 	= \Request::get('pages');
 		
-		//dd($data);
 		return view()->make('layouts.partials.pagination', $data);
 	}
 
 	public function test()
 	{
-		//
+		return response()->json(Media::findSponsor('8a1b3f466b6769b818c96b243212b898'));
+	}
+
+	public function sponsors()
+	{
+		return response()->json(Media::getSponsors());
 	}
 }
