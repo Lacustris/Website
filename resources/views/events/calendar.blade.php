@@ -66,4 +66,35 @@
 		@endforeach
 	</div>
 </div>
+
+<div class="calendar calendar--simple"> <!-- Mobile view -->
+	<div class="calendar__header">
+		<div class="calendar__date">
+			{{ $date }}
+		</div>
+		<div class="calendar__navigation">
+			<a href="{{ $previous }}"><i class="fa fa-angle-left"></i> {{ __('events.previousMonth') }}</a>
+			<a href="{{ $next }}">{{ __('events.nextMonth') }} <i class="fa fa-angle-right"></i></a>
+
+		</div>
+	</div>
+
+	@foreach($weeks as $number => $week)
+
+	@foreach($week as $day => $events)
+
+	@if(is_array($events))
+		<div class="calendar__event-date">
+		{{ $day }} {{ $date }}
+		</div>
+		@foreach($events as $event)
+		<a href="/event/{{ $event->id }}" class="calendar__event">{{ $event->name }}</a>
+		@endforeach
+		
+	@endif
+
+	@endforeach
+
+	@endforeach
+</div>
 @endsection

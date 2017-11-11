@@ -53,7 +53,9 @@ class EventController extends Controller
 
 	public function index(Event $event)
 	{
-		$data['events'] = Event::orderBy('start_time', 'desc')->get();
+		$data['events'] = 	Event::whereDate('start_time', '>=', Carbon::today()->toDateString())
+							->orderBy('start_time', 'asc')
+							->get();
 
 		return view('admin.events.index', $data);
 	}

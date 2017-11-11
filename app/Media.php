@@ -38,7 +38,7 @@ class Media
 
 		Storage::put($fileName, $file);
 
-		$path = '/storage/' . $fileName;
+		$path = '/uploads/' . $fileName;
 
 		return $path;
 	}

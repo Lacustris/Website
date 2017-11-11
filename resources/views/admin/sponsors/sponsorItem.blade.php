@@ -1,5 +1,5 @@
 <div class="row"><div class="col-md-2">
-		<img src="/storage/{{ $sponsor->file }}" width="150px">
+		<img src="/uploads/{{ $sponsor->file }}" width="150px">
 	</div>
 
 	<div class="col-md-2">

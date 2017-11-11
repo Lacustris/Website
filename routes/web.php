@@ -14,9 +14,8 @@
 Route::get('/', 			'PostController@recent');
 Route::get('/post/{post}', 	'PostController@show');
 
-Route::get('/project', function () { // THIS IS TEMPORARY
-    return view('welcome');
-});
+Route::get('/join', 'HomeController@join');
+Route::post('/join', 'HomeController@doJoin');
 
 // Authentication routes
 Auth::routes(); // TODO: Look into changing this to custom routes, since not everything will be used -- Maybe solved by removing them from the controllers

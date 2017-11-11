@@ -171,6 +171,7 @@ function GetUrls(origin, elem) {
 	return null;
 }
 
+// Change the image
 function SetImage(elem, images) {
 	var target = elem.find('.carousel__image');
 
@@ -179,7 +180,7 @@ function SetImage(elem, images) {
 	setTimeout(function () {
 		var index = __WEBPACK_IMPORTED_MODULE_0__core__["a" /* default */].randomInt(0, images.length);
 
-		target.attr('src', '/storage/' + images[index]['file']);
+		target.attr('src', '/uploads/' + images[index]['file']);
 		target.attr('alt', images[index]['alt']);
 		target.data('carousel-target', images[index]['url']);
 
@@ -382,7 +383,7 @@ function FetchPreviewImages(dialog, pageIndex, callback) {
 	$.get('/media/index?page=' + pageIndex, null, function (result) {
 		$('.dialog__image-previews').html('');
 		result.images.forEach(function (elem) {
-			$('.dialog__image-previews').append('<div class="dialog__image-preview" data-image="/storage/' + elem + '"><img src="/storage/' + elem + '" alt=""></div>');
+			$('.dialog__image-previews').append('<div class="dialog__image-preview" data-image="/uploads/' + elem + '"><img src="/uploads/' + elem + '" alt=""></div>');
 		});
 
 		BuildPagination(pageIndex, result.pages, $('.dialog__image-previews-pages'), callback);

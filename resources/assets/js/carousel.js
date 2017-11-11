@@ -33,6 +33,7 @@ function GetUrls(origin, elem)
 	return null;
 }
 
+// Change the image
 function SetImage(elem, images)
 {
 	var target = elem.find('.carousel__image');
@@ -42,7 +43,7 @@ function SetImage(elem, images)
 	setTimeout(function() {
 		var index = Core.randomInt(0, images.length);
 
-		target.attr('src', '/storage/' + images[index]['file']);
+		target.attr('src', '/uploads/' + images[index]['file']);
 		target.attr('alt', images[index]['alt']);
 		target.data('carousel-target', images[index]['url']);
 

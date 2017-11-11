@@ -63,7 +63,7 @@
 			</select>
 		</div>
 
-		<div class="form-group"{{ $item->getType() == 'dynamic' ? ' style="display: none;"' : '' }} data-menu-type="page">
+		<div class="form-group"{!! $item->target == 'calendar' ? ' style="display: none;"' : '' !!} data-menu-type="page">
 			<label for="page" class="control-label">
 				{{ __( 'admin.menuPage' ) }}
 			</label>

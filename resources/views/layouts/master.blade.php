@@ -49,5 +49,10 @@
 				</div>
 			</div>
 		</section>
+		<footer class="footer">
+			<div class="container">
+			&copy; Lacustris {{ date("Y") }}
+			</div>
+		</footer>
 	</body>
 </html>

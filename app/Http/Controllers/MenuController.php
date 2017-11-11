@@ -101,7 +101,13 @@ class MenuController extends Controller
 		$parent 	= $request->parent;
 		$parent_id 	= ($parent == 'root') ? null : $parent;
 		$order 		= $menu->updateOrder($parent_id);
-		$target 	= 'dynamic:'.$request->page;
+		if($request->type == 'page') {
+			$target = 'dynamic:'.$request->page;
+		} elseif($request->type == 'calendar') {
+			$target = 'calendar';
+		} else {
+			$target = '#';
+		}
 
 		$menu->name_nl 		= $request->name_nl;
 		$menu->name_en 		= $request->name_en;

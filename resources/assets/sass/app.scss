@@ -4,13 +4,14 @@
 @import url(https://fonts.googleapis.com/css?family=Lato%3A100%2C300%2C400%2C400italic%2C700%2C900%2C900italic%7CPT+Serif%3A400%2C700%2C400italic%2C700italic&ver=4.7.3);
 
 // Variables
-@import "variables";
+@import "variables"; // Import before bootstrap so we can override stuff
 
 // Bootstrap, not from node stuff, as it is a custom version
 @import "bootstrap/bootstrap";
 
 // Lacustris Custom Styles
 @import "header";
+@import "footer";
 @import "navigation";
 @import "content";
 @import "aside";
@@ -24,4 +25,17 @@
 // TODO: Categorise this
 button, .btn {
   text-transform: capitalize;
+}
+
+#join-link {
+	@media screen and (min-width: $screen-md) {
+		color: $brand-primary;
+		border-color: $brand-primary;
+		border-width: 1px;
+		border-style: solid;
+		background: $brand-tertiary;
+		border-radius: 15px;
+		text-transform: capitalize;
+		font-weight: bold;
+	}
 }

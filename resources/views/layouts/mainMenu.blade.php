@@ -38,5 +38,8 @@
 </ul>
 
 <ul class="nav navbar-nav navbar-right">
+	@if(!Auth::check())
+	<li>@include('layouts.partials.join')</li>
+	@endif
 	<li>@include('layouts.partials.language')</li>
 </ul>

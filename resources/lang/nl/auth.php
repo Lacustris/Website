@@ -27,9 +27,13 @@ return [
     |
     */
 
-    'login' => 'log in',
-    'logout' => 'log uit',
-    'remember' => 'Blijf Ingelogd',
-    'forgotPassword' => 'Wachtwoord vergeten?',
+    'login' 			=> 'log in',
+    'logout' 			=> 'log uit',
+    'remember' 			=> 'Blijf Ingelogd',
+    'forgotPassword' 	=> 'Wachtwoord vergeten?',
+	'loggedInAs' 		=> 'Je bent ingelogd als :name',
+	'sendResetLink' 	=> 'Stuur wachtwoord reset link',
+	'resetPassword' 	=> 'Reset Wachtwoord',
+	'passwordConfirm' 	=> 'Bevestig Wachtwoord',
 
 ];
