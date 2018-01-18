@@ -41,7 +41,7 @@ return [
 	'advanced' 			=> 'Gevorderd',
 	'levelexplanation' 	=> 'Uitleg m.b.t. niveau',
 	
-	'join' => 'Wordt Lid!',
+	'join' => 'Word Lid!',
 
     'ourSponsors' 	=> 'Onze Sponsoren',
 	'showEnglish' 	=> 'English',

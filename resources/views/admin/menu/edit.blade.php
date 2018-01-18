@@ -60,10 +60,12 @@
 			<select id="type" name="type" class="form-control" data-action="select-menu-type" required>
 				<option value="page"{{ $item->getType() == 'dynamic' ? ' selected' : '' }}>{{ __('admin.menuTypePage') }}</option>
 				<option value="calendar"{{ $item->getType() == 'calendar' ? ' selected' : '' }}>{{ __('admin.menuTypeCalendar') }}</option>
+				<option value="competitions"{{ $item->getType() == 'competitions' ? ' selected' : '' }}>{{ __('admin.menuTypeCompetitions') }}</option>
+				<option value="link"{{ $item->getType() == 'link' ? ' selected' : '' }}>{{ __('admin.menuTypeLink') }}</option>
 			</select>
 		</div>
 
-		<div class="form-group"{!! $item->target == 'calendar' ? ' style="display: none;"' : '' !!} data-menu-type="page">
+		<div class="form-group"{!! $item->getType() == 'dynamic' ? '' : ' style="display: none;"' !!} data-menu-type="page">
 			<label for="page" class="control-label">
 				{{ __( 'admin.menuPage' ) }}
 			</label>
@@ -75,6 +77,14 @@
 
 				@endforeach
 			</select>
+		</div>
+
+		<div class="form-group"{!! $item->getType() == 'link' ? '' : ' style="display: none;"' !!} data-menu-type="link">
+			<label for="link" class="control-label">
+				{{ __( 'admin.menuTypeLink' ) }}
+			</label>
+
+			<input name="link" id="link" class="form-control" value="{{ $item->getType() == 'link' ? $item->getTarget() : '' }}">
 		</div>
 
 	</div>

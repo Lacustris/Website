@@ -26,7 +26,10 @@ Route::get('/page/{page}', 'PageController@show');
 Route::get('/calendar/{month?}/{year?}', 	'EventController@calendar'); // TODO: put guard on month and year value
 Route::get('/event/{event}', 				'EventController@show');
 
- // Admin Routes
+// Competitions
+Route::get('/competitions', 'CompetitionController@competitionIndex');
+
+// Admin Routes
 Route::group(['middleware' => ['permissions:8'], 'prefix' => 'admin' ], function () {
 	Route::get('/', function() { // TODO: get this out of a closure!
 		return view('admin.main');
@@ -74,6 +77,7 @@ Route::group(['middleware' => ['permissions:8'], 'prefix' => 'admin' ], function
 	Route::post('/user/update/{user}', 	'UserController@update');
 	Route::post('/user/destroy/{user}', 'UserController@destroy');
 
+	// Event Admin
 	Route::group([ 'prefix' => 'events' ], function() {
 		Route::get('/', 					'EventController@index');
 		Route::get('/create', 				'EventController@create');
@@ -81,6 +85,16 @@ Route::group(['middleware' => ['permissions:8'], 'prefix' => 'admin' ], function
 		Route::post('/store', 				'EventController@store');
 		Route::post('/update/{event}', 		'EventController@update');
 		Route::post('/destroy/{event}', 	'EventController@destroy');
+	});
+
+	// Competition Admin
+	Route::group([ 'prefix' => 'competitions'], function() {
+		Route::get('/', 						'CompetitionController@index');
+		Route::get('/create', 					'CompetitionController@create');
+		Route::get('/edit/{competition}', 		'CompetitionController@edit');
+		Route::post('/store', 					'CompetitionController@store');
+		Route::post('/update/{competition}', 	'CompetitionController@update');
+		Route::post('/destroy/{competition}', 	'CompetitionController@destroy');
 	});
 });
 

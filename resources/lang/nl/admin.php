@@ -38,14 +38,16 @@ return [
 	'userAdmin' 	=> 'Gebruiker Beheer',
 	'userRole' 		=> 'Gebruikersrol',
 
-	'menuAdmin' 		=> 'Menu Beheer',
-	'menuParent' 		=> 'Ouder',
-	'menuName' 			=> 'Naam',
-	'menuOrder' 		=> 'Volgorde',
-	'menuPage' 			=> 'Pagina',
-	'menuType' 			=> 'Type',
-	'menuTypePage' 		=> 'Pagina',
-	'menuTypeCalendar' 	=> 'Kalender',
+	'menuAdmin' 			=> 'Menu Beheer',
+	'menuParent' 			=> 'Ouder',
+	'menuName' 				=> 'Naam',
+	'menuOrder' 			=> 'Volgorde',
+	'menuPage' 				=> 'Pagina',
+	'menuType' 				=> 'Type',
+	'menuTypePage' 			=> 'Pagina',
+	'menuTypeCalendar' 		=> 'Kalender',
+	'menuTypeLink'			=> 'Link',
+	'menuTypeCompetitions'	=> 'Wedstrijdkalender',
 
 	'sponsorAdmin' 	=> 'Sponsor Beheer',
 	'sponsorImage' 	=> 'Logo',
@@ -58,5 +60,12 @@ return [
 	'eventDateTime' 	=> 'Evenement Datum',
 	'eventStartTime'	=> 'Evenement Begint op',
 	'eventEndTime' 		=> 'Evenement Eindigt op',
+	
+	'competitionAdmin' 			=> 'Wedstrijden',
+	'competitionTitle' 			=> 'Titel',
+	'competitionDateTime' 		=> 'Datum',
+	'competitionOrganisation' 	=> 'Organisatie',
+	'competitionLocation' 		=> 'Locatie',
+	'competitionLink'			=> 'Inschrijflink',
 
 ];

@@ -1,0 +1,18 @@
+th {
+	padding: 10px;
+	text-transform: capitalize;
+}
+
+thead {
+	border-bottom: 2px double $brand-primary;
+}
+
+table {
+	width: 100%;
+	max-width: 100%;
+}
+
+tr {
+	margin-bottom: 10px;
+	margin-top: 5px;
+}

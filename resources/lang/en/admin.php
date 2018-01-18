@@ -38,14 +38,16 @@ return [
 	'userAdmin' 	=> 'User Management',
 	'userRole' 		=> 'User Role',
 
-	'menuAdmin' 		=> 'Menu Management',
-	'menuParent' 		=> 'Parent',
-	'menuName' 			=> 'Name',
-	'menuOrder' 		=> 'Order',
-	'menuPage' 			=> 'Page',
-	'menuType' 			=> 'Type',
-	'menuTypePage' 		=> 'Page',
-	'menuTypeCalendar' 	=> 'Calendar',
+	'menuAdmin' 			=> 'Menu Management',
+	'menuParent' 			=> 'Parent',
+	'menuName' 				=> 'Name',
+	'menuOrder' 			=> 'Order',
+	'menuPage' 				=> 'Page',
+	'menuType' 				=> 'Type',
+	'menuTypePage' 			=> 'Page',
+	'menuTypeCalendar' 		=> 'Calendar',
+	'menuTypeLink'			=> 'Link',
+	'menuTypeCompetitions'	=> 'Competition Calendar',
 
 	'sponsorAdmin' 	=> 'Sponsor Management',
 	'sponsorImage' 	=> 'Logo',
@@ -58,5 +60,12 @@ return [
 	'eventDateTime' 	=> 'Event Date',
 	'eventStartTime'	=> 'Event Starts at',
 	'eventEndTime' 		=> 'Event Ends at',
+
+	'competitionAdmin' 			=> 'Competitions',
+	'competitionTitle' 			=> 'Title',
+	'competitionDateTime' 		=> 'Date',
+	'competitionOrganisation' 	=> 'Organisation',
+	'competitionLocation' 		=> 'Location',
+	'competitionLink' 			=> 'Enroll link',
 
 ];

@@ -14,6 +14,11 @@ class Event extends Model
 		'end_time' 		=> 'required|date|after_or_equal:start_time',
 	];
 
+	public function competition()
+	{
+		return $this->hasOne('App\Competition', 'event_id');
+	}
+
     public static function upcoming($number)
 	{
 		return static::whereDate('start_time', '>=', Carbon::today('Europe/Amsterdam')->toDateString())->orderBy('start_time', 'asc')->take($number)->get();
@@ -59,9 +64,9 @@ class Event extends Model
 		return $weeks;
 	}
 
-	public function startDate()
+	public function startDate($year = false)
 	{
-		return $this->formatDate($this->start_time);
+		return $this->formatDate($this->start_time, $year);
 	}
 	
 	public function endDate()
@@ -69,12 +74,15 @@ class Event extends Model
 		return $this->formatDate($this->end_time);
 	}
 
-	private static function formatDate($time)
+	private static function formatDate($time, $year = false)
 	{
 		$timestamp = Carbon::parse($time);
 		$day = $timestamp->day;
 		$month = static::getMonth($timestamp->month);
-
+		if($year) {
+			$year = $timestamp->year;
+			return $day . ' ' . $month . ' ' . $year;
+		}
 		return $day . ' ' . $month;
 	}
 

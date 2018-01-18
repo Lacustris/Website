@@ -23,14 +23,32 @@
 		{{ $event->endDate() }} {{ __('events.at') }} {{ $event->endTime() }}
 	</div>
 </div>
-<!--<div class="row">
+@if(isset($event->competition))
+<div class="row">
 	<div class="col-sm-3 col-md-2 event__descriptor">
 		{{ __('events.location') }}
 	</div>
 	<div class="col-sm-9 col-md-10">
-		
+		{{ $event->competition->location }}
 	</div>
-</div>-->
+</div>
+<div class="row">
+	<div class="col-sm-3 col-md-2 event__descriptor">
+		{{ __('competitions.organisation') }}
+	</div>
+	<div class="col-sm-9 col-md-10">
+		{{ $event->competition->organisation }}
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-3 col-md-2 event__descriptor">
+		{{ __('competitions.participate') }}
+	</div>
+	<div class="col-sm-9 col-md-10">
+		{!! $event->competition->link() !!}
+	</div>
+</div>
+@endif
 
 <hr>
 

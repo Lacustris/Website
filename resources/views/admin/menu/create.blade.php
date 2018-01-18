@@ -61,6 +61,8 @@
 				<option value="false" disabled selected>---</option>
 				<option value="page">{{ __('admin.menuTypePage') }}</option>
 				<option value="calendar">{{ __('admin.menuTypeCalendar') }}</option>
+				<option value="competitions">{{ __('admin.menuTypeCompetitions') }}</option>
+				<option value="link">{{ __('admin.menuTypeLink') }}</option>
 			</select>
 		</div>
 
@@ -76,6 +78,14 @@
 
 				@endforeach
 			</select>
+		</div>
+
+		<div class="form-group" style="display: none;" data-menu-type="link">
+			<label for="link" class="control-label">
+				{{ __( 'admin.menuTypeLink' ) }}
+			</label>
+
+			<input name="link" id="link" class="form-control" value="{{ $item->getType() == 'link' ? $item->getTarget() : '' }}">
 		</div>
 
 	</div>

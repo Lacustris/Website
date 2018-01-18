@@ -56,6 +56,15 @@ class MenuController extends Controller
 			$target = 'dynamic:'.$request->page;
 		} elseif($request->type == 'calendar') {
 			$target = 'calendar';
+		} elseif($request->type == 'competitions') {
+			$target = 'competitions';
+		} elseif($request->type == 'link') {
+			$link = $request->link;
+			if(substr($link, 0, 4) != 'http') {
+				$link = 'http://' . $link;
+			}
+			
+			$target = 'link:' . $link;
 		} else {
 			$target = '#';
 		}
@@ -105,6 +114,15 @@ class MenuController extends Controller
 			$target = 'dynamic:'.$request->page;
 		} elseif($request->type == 'calendar') {
 			$target = 'calendar';
+		} elseif($request->type == 'competitions') {
+			$target = 'competitions';
+		} elseif($request->type == 'link') {
+			$link = $request->link;
+			if(substr($link, 0, 4) != 'http') {
+				$link = 'http://' . $link;
+			}
+
+			$target = 'link:' . $link;
 		} else {
 			$target = '#';
 		}

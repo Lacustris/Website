@@ -36,7 +36,7 @@ class Menu extends Model
 
 	public function getURL()
 	{
-		$target = explode(':', $this->target);
+		$target = explode(':', $this->target, 2);
 
 		$type = $target[0];
 
@@ -47,6 +47,12 @@ class Menu extends Model
 			case 'calendar':
 				return '/calendar';
 				break;
+			case 'competitions':
+				return '/competitions';
+				break;
+			case 'link':
+				return $target[1];
+				break;
 			default:
 				return '/';
 		}
@@ -54,7 +60,14 @@ class Menu extends Model
 
 	public function getType()
 	{
-		return explode(':', $this->target)[0];
+		return explode(':', $this->target, 2)[0];
+	}
+
+	public function getTarget()
+	{
+		$res = explode(':', $this->target, 2);
+
+		return end($res); // Just take the last entry
 	}
 
 	public function name()
