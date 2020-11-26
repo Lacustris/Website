@@ -19,7 +19,7 @@
     "font-awesome": "github:fortawesome/Font-Awesome",
     "jquery": "^3.2.1",
     "laravel-mix": "^0.10.0",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.19",
     "node-sass": "^4.5.2",
     "nodemon": "^1.11.0"
   },
