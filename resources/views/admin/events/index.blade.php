@@ -25,6 +25,10 @@
 		<div class="col-md-3">
 			{{ __( 'admin.eventDateTime' ) }}
 		</div>
+		
+		<div class="col-md-2">
+			{{ __( 'admin.eventRegisterable' ) }}
+		</div>
 
 		<div class="col-md-2">
 			{{ __( 'admin.crud' ) }}

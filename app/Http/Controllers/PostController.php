@@ -14,7 +14,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $data['posts'] = Post::all(); // TODO: add pagination
+        $data['posts'] = Post::latest()->paginate(10); // TODO: add pagination
 
 		return view('admin.posts.index', $data);
     }

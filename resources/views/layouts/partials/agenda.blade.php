@@ -10,4 +10,6 @@
 
 @endif
 
+<hr>
+
 <a href="/calendar">{{ __( 'events.viewCal' ) }}</a>

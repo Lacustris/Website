@@ -14,7 +14,7 @@ return [
     'new' 					=> 'New',
     'edit' 					=> 'Edit',
 	'delete' 				=> 'Delete',
-	'deleteConfirmation' 	=> 'Are you sure you want to delete this item?',
+	'deleteConfirmation' 	=> 'Are you sure you want to delete this item? This action is irreversible.',
 	'save'			 		=> 'Save',
 	'crud' 					=> 'Actions',
 	'language' 				=> 'Language',
@@ -22,6 +22,8 @@ return [
 	'title' 				=> 'Title',
 	'contents' 				=> 'Contents',
 	'optional' 				=> 'Optional',
+	'publish' 				=> 'Publish',
+	'unpublish' 			=> 'Unpublish',
 
 	'langEN' => 'English',
 	'langNL' => 'Dutch',
@@ -48,6 +50,9 @@ return [
 	'menuTypeCalendar' 		=> 'Calendar',
 	'menuTypeLink'			=> 'Link',
 	'menuTypeCompetitions'	=> 'Competition Calendar',
+	'menuDelete' 			=> 'Are you sure you want to delete this menu entry?',
+	'menuVisible' 			=> 'Visible',
+	'menuInvisible' 		=> 'Invisible',
 
 	'sponsorAdmin' 	=> 'Sponsor Management',
 	'sponsorImage' 	=> 'Logo',

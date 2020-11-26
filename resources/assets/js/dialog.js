@@ -32,6 +32,30 @@ function Confirm(message, callback)
 	});
 }
 
+/**
+ * Display information
+ */
+function DisplayInformation(title,body)
+{
+	if(!CountDialogs('display-information')) {
+		return;
+	}
+
+	var dialog = $('.dialog--display-information');
+
+	$('.dialog--display-information .dialog__title').html(title);
+	$('.dialog--display-information .dialog__body').html(body);
+
+	$('.dialog__button').on('click', function()
+	{
+		$('.dialog__button').unbind('click');
+
+		dialog.hide('slow');
+	});
+
+	dialog.show('slow');
+}
+
 function ImageOverview(callback)
 {
 	if(!CountDialogs('images')) {
@@ -187,7 +211,8 @@ function FetchPreviewImages(dialog, pageIndex, callback)
 }
 
 export default {
-	confirm: 		Confirm,
-	enterURL:		EnterURL,
-	imageOverview: 	ImageOverview
+	confirm: 			Confirm,
+	enterURL:			EnterURL,
+	imageOverview: 		ImageOverview,
+	displayInformation: DisplayInformation 
 };

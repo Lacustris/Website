@@ -14,12 +14,8 @@
 
 <div class="admin-group headings">
 	<div class="row">
-		<div class="col-md-1">
-			{{ __( 'admin.menuParent' ) }}
-		</div>
-
-		<div class="col-md-1">
-			ID
+		<div class="col-md-2">
+			{{ __( 'admin.menuOrder' ) }}
 		</div>
 
 		<div class="col-md-2">
@@ -31,7 +27,7 @@
 		</div>
 
 		<div class="col-md-1">
-			{{ __( 'admin.menuOrder' ) }}
+			{{ __( 'admin.menuVisible' ) }}
 		</div>
 
 		<div class="col-md-2">

@@ -34,7 +34,7 @@
 				{{ $day }}<br>
 				@if(is_array($events))
 				@foreach($events as $event)
-				<a href="/event/{{ $event->id }}" class="calendar__event">{{ $event->name }}</a>
+				<a href="/event/{{ $event->id }}" class="calendar__event">{{ $event->name() }}</a>
 				@endforeach
 				@endif
 			</div>
@@ -45,7 +45,7 @@
 				{{ $day }}<br>
 				@if(is_array($events))
 				@foreach($events as $event)
-				<a href="/event/{{ $event->id }}" class="calendar__event">{{ $event->name }}</a>
+				<a href="/event/{{ $event->id }}" class="calendar__event">{{ $event->name() }}</a>
 				@endforeach
 				@endif
 			</div>
@@ -56,7 +56,7 @@
 				{{ $day }}<br>
 				@if(is_array($events))
 				@foreach($events as $event)
-				<a href="/event/{{ $event->id }}" class="calendar__event">{{ $event->name }}</a>
+				<a href="/event/{{ $event->id }}" class="calendar__event">{{ $event->name() }}</a>
 				@endforeach
 				@endif
 			</div>
@@ -88,7 +88,7 @@
 		{{ $day }} {{ $date }}
 		</div>
 		@foreach($events as $event)
-		<a href="/event/{{ $event->id }}" class="calendar__event">{{ $event->name }}</a>
+		<a href="/event/{{ $event->id }}" class="calendar__event">{{ $event->name() }}</a>
 		@endforeach
 		
 	@endif

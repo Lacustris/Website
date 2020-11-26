@@ -1,12 +1,12 @@
 @extends ('layouts.master')
 
 @section('title')
-	{{$event->name}}
+	{{$event->name()}}
 @stop
 
 @section('contents')
 
-<h1>{{ $event->name }}</h1>
+<h1>{{ $event->name() }}</h1>
 <div class="row event">
 	<div class="col-sm-3 col-md-2 event__descriptor">
 		{{ __('events.start') }}
@@ -49,9 +49,24 @@
 	</div>
 </div>
 @endif
+@if(Auth::check() && $event->registerable())
+<div class="row">
+<div class="col-sm-3 col-md-2 event__descriptor">
+		{{ __('events.participants') }}
+	</div>
+	<div class="col-sm-5 col-md-5"{{ count($event->participants) > 0 ? ' data-action=participants data-eventid='.$event->id : '' }}>
+		{!! count($event->participants) != 0 ? '<a href="#">' . __( 'events.showParticipants' ) . '</a>' : __( 'events.noParticipants' ) !!}
+	</div>
+	<div class="col-sm-4 col-md-5">
+		<a href="/event/join/{{ $event->id }}">{{ $event->me() ? __( 'events.dontParticipate' ) : __( 'events.participate' ) }}</a>
+	</div>
+</div>
+@endif
 
 <hr>
 
-<p>{{ $event->description }}</p>
+<p>{!! $event->description() !!}</p>
+
+@include('layouts.dialogs.info')
 
 @endsection

@@ -16,6 +16,9 @@ return [
 	'no'		=> 'Nee',
 	'optional' 	=> 'Optioneel',
 	'send' 		=> 'Versturen',
+	'here' 		=> 'Hier',
+	'toTop' 	=> 'Terug naar boven',
+	'close' 	=> 'Sluiten',
 
 	'name' 				=> 'Naam',
     'email' 			=> 'E-mail adres',

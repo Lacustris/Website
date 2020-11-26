@@ -12,17 +12,28 @@ return [
     */
 
     'from' 		=> 'Van',
-	'at' 		=> 'bij',
+	'at' 		=> 'om',
 	'until' 	=> 'tot',
 	'start' 	=> 'Begin',
 	'end' 		=> 'Einde',
-	'location' 	=> 'locatie',
+	'location' 	=> 'Locatie',
+
+	'calendarTitle' => 'Kalender',
 
     'agenda' 		=> 'agenda',
 	'noUpcoming' 	=> 'Geen aankomende evenementen.',
 	'viewCal' 		=> 'Bekijk kalender',
 	'nextMonth' 	=> 'Volgende maand',
 	'previousMonth'	=> 'Vorige maand',
+
+	'participants' 				=> 'Deelnemers',
+	'showParticipants' 			=> 'Toon deelnemers',
+	'noParticipants' 			=> 'Nog geen deelnemers',
+	'dontParticipate' 			=> 'Uitschrijven',
+	'participate' 				=> 'Inschrijven',
+	'participateSuccessful' 	=> 'Succesvol ingeschreven!',
+	'participateStopSuccessful' => 'Succesvol uitgeschreven!',
+	'participantsList' 			=> 'Deelnemers',
 
 	'january' 	=> 'januari',
 	'february' 	=> 'februari',

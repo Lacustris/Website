@@ -29,27 +29,40 @@ Route::get('/event/{event}', 				'EventController@show');
 // Competitions
 Route::get('/competitions', 'CompetitionController@competitionIndex');
 
+// User-only Routes
+Route::group([ 'middleware' => ['auth'] ], function() {
+	Route::get('/event/join/{event}', 			'EventController@join');
+	Route::get('/event/participants/{event}', 	'EventController@participants');
+});
+
 // Admin Routes
-Route::group(['middleware' => ['permissions:8'], 'prefix' => 'admin' ], function () {
+Route::group(['middleware' => ['permissions:7'], 'prefix' => 'admin' ], function () {
 	Route::get('/', function() { // TODO: get this out of a closure!
 		return view('admin.main');
 	});
 
 	// Menu Admin
-	Route::get('/menu', 				'MenuController@index');
-	Route::get('/menu/create', 			'MenuController@create');
-	Route::get('/menu/edit/{menu}', 	'MenuController@edit');
-	Route::post('/menu/store', 			'MenuController@store');
-	Route::post('/menu/update/{menu}', 	'MenuController@update');
-	Route::post('/menu/destroy/{menu}', 'MenuController@destroy');
+	Route::group([ 'middleware' => ['permissions:7'], 'prefix' => 'menu'], function() {
+		Route::get('/', 				'MenuController@index');
+		Route::get('/create', 			'MenuController@create');
+		Route::get('/edit/{menu}',	 	'MenuController@edit');
+		Route::get('/up/{menu}', 		'MenuController@up');
+		Route::get('/down/{menu}', 		'MenuController@down');
+		Route::get('/visibility/{menu}','MenuController@toggleVisibility');
+		Route::post('/store', 			'MenuController@store');
+		Route::post('/update/{menu}', 	'MenuController@update');
+		Route::post('/destroy/{menu}', 	'MenuController@destroy');
+	});
 
 	// Page Admin
-	Route::get('/pages', 					'PageController@index');
-	Route::get('/pages/create', 			'PageController@create');
-	Route::get('/pages/edit/{page}', 		'PageController@edit');
-	Route::post('/pages/store', 			'PageController@store');
-	Route::post('/pages/update/{page}', 	'PageController@update');
-	Route::post('/pages/destroy/{page}', 	'PageController@destroy');
+	Route::group([ 'middleware' => ['permissions:7'], 'prefix' => 'pages' ], function() {
+		Route::get('/', 				'PageController@index');
+		Route::get('/create', 			'PageController@create');
+		Route::get('/edit/{page}', 		'PageController@edit');
+		Route::post('/store', 			'PageController@store');
+		Route::post('/update/{page}', 	'PageController@update');
+		Route::post('/destroy/{page}', 	'PageController@destroy');
+	});
 
 	// Posts Admin
 	Route::get('/posts', 					'PostController@index');
@@ -69,13 +82,15 @@ Route::group(['middleware' => ['permissions:8'], 'prefix' => 'admin' ], function
 		Route::post('/destroy/{sponsor}', 	'SponsorController@destroy');
 	});
 
-	// User Admin
-	Route::get('/user', 				'UserController@index');
-	Route::get('/user/create', 			'UserController@create');
-	Route::get('/user/edit/{user}', 	'UserController@edit');
-	Route::post('/user/store', 			'UserController@store');
-	Route::post('/user/update/{user}', 	'UserController@update');
-	Route::post('/user/destroy/{user}', 'UserController@destroy');
+	Route::group(['middleware' => ['permissions:8'], 'prefix' => 'user' ], function () {
+		// User Admin
+		Route::get('/', 				'UserController@index');
+		Route::get('/create', 			'UserController@create');
+		Route::get('/edit/{user}', 		'UserController@edit');
+		Route::post('/store', 			'UserController@store');
+		Route::post('/update/{user}', 	'UserController@update');
+		Route::post('/destroy/{user}', 	'UserController@destroy');
+	});
 
 	// Event Admin
 	Route::group([ 'prefix' => 'events' ], function() {

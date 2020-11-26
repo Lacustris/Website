@@ -6,7 +6,7 @@
 			{{ __('general.confirmationTitle') }}
 		</div>
 		<div class="dialog__body">
-			Body Placeholder
+		{{ __('admin.deleteConfirmation') }}
 		</div>
 		<div class="dialog__actions">
 			<button class="btn btn-danger dialog__button" data-confirm="true">{{ __( 'general.yes' ) }}</button>

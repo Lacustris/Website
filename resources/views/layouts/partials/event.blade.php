@@ -8,7 +8,7 @@
 			{{ $event->startTime() }}
 		</div>
 		<div class="event__name">
-			{{ $event->name }}
+			<a href="/event/{{ $event->id }}">{{ $event->name() }}</a>
 		</div>
 	</div>
 	

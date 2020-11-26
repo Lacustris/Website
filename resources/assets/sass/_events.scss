@@ -11,7 +11,7 @@
 
 		.event__date {
 			font-weight: bold;
-			color: $brand-primary;
+			//color: $brand-primary;
 		}
 
 		.event__time {
@@ -155,7 +155,7 @@
 	&__date {
 		font-weight: bold;
 		font-size: 2em;
-		@media screen  and(max-width: $screen-sm-max) {
+		@media screen  and (max-width: $screen-sm-max) {
 			text-align: center;
 			font-size: 1.7em;
 		}

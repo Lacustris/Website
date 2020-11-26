@@ -24,14 +24,26 @@ class Menu extends Model
 		'parent_id'		=> '', // TODO: see if there's a nice way to make the validator check this
 	];
 	
-	public static function getMain()
+	public static function getMain($showHidden = false)
 	{
-		return Menu::whereNull('parent_id')->orderBy('order')->get();
+		$menus = Menu::whereNull('parent_id');
+
+		if(!$showHidden) {
+			$menus->where('visible', true);
+		}
+
+		return $menus->orderBy('order')->get();
 	}
 
-	public function getChildren()
+	public function getChildren($showHidden = false)
 	{
-		return Menu::where('parent_id', $this->id)->orderBy('order')->get();
+		$menus =  Menu::where('parent_id', $this->id);
+
+		if(!$showHidden) {
+			$menus->where('visible', true);
+		}
+
+		return $menus->orderBy('order')->get();
 	}
 
 	public function getURL()
@@ -97,5 +109,48 @@ class Menu extends Model
 		}
 
 		return 0;
+	}
+
+	public static function minOrder($parent_id = null)
+	{
+		if($parent_id === null) {
+			$item = Menu::whereNull('parent_id')->orderBy('order', 'ASC')->first();
+		} else {
+			$item = Menu::where('parent_id', $parent_id)->orderBy('order', 'ASC')->first();
+		}
+
+		return isset($item->order) ? $item->order : 0;
+	}
+
+	public static function maxOrder($parent_id = null)
+	{
+		if($parent_id === null) {
+			$item = Menu::whereNull('parent_id')->orderBy('order', 'DESC')->first();
+		} else {
+			$item = Menu::where('parent_id', $parent_id)->orderBy('order', 'DESC')->first();
+		}
+
+		return isset($item->order) ? $item->order : 0;
+	}
+
+	public static function normalizeOrder($parent_id = null)
+	{
+		if($parent_id !== null) {
+			$items = Menu::where('parent_id', $parent_id)->orderBy('order', 'ASC')->get();
+		} else {
+			$items = Menu::whereNull('parent_id')->orderBy('order', 'ASC')->get();
+		}
+
+		if(!isset($items)) {
+			return;
+		}
+
+		$i = 0;
+		foreach($items as $item) {
+			$item->order = $i;
+			$item->save();
+			static::normalizeOrder($item->id);
+			$i++;
+		}
 	}
 }

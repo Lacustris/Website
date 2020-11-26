@@ -41,11 +41,11 @@ class Competition extends Model
 	public function link()
 	{
 		if(substr($this->link, 0, 4) == 'http') {
-			return '<a href="' . $this->link . '">Hier</a>';
+			return '<a href="' . $this->link . '">' . __('general.here') . '</a>';
 		}
 
 		if(substr($this->link, 0, 3) == 'www') {
-			return '<a href="http://' . $this->link . '">Hier</a>';
+			return '<a href="http://' . $this->link . '">' . __('general.here') . '</a>';
 		}
 
 		return $this->link;

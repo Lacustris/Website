@@ -31,6 +31,7 @@
 				@include('layouts.adminMenu')
 			</div>
 			<div class="admin-page__content">
+				@include('layouts.partials.notification')
 				@yield ('contents')
 			</div>
 		</div>

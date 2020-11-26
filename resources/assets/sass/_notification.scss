@@ -1,0 +1,25 @@
+.notification {
+	border-width: 2px;
+	border-style: solid;
+	border-radius: 3px;
+
+	font-weight: bold;
+
+	padding: 10px;
+
+	&--error {
+		border-color: $brand-danger;
+		color: darken($brand-danger, 20%);
+		background-color: lighten($brand-danger, 40%);
+	}
+
+	&--success {
+		border-color: $brand-success;
+		color: darken($brand-success, 20%);
+		background-color: lighten($brand-success, 40%);
+	}
+
+	&--unused {
+		display: none;
+	}
+}

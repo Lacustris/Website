@@ -31,7 +31,7 @@ class Post extends TextModel
 	public function publishDate()
 	{
 		//strTo
-		return $this->created_at->format('d-m-Y, h:m');
+		return $this->created_at->format('d-m-Y, H:i');
 	}
 
 	public function age()

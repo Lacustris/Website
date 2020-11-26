@@ -46,10 +46,12 @@ class CompetitionController extends Controller
 		
 		$event = new Event();
 
-		$event->name 		= $request->name;
-		$event->description = $request->description;
-		$event->start_time	= $request->start_time;
-		$event->end_time	= $request->end_time;
+		$event->name 			= $request->name;
+		$event->name_en 		= $request->name_en;
+		$event->description 	= $request->description;
+		$event->description_en 	= $request->description_en;
+		$event->start_time		= $request->start_time;
+		$event->end_time		= $request->end_time;
 		$event->save();
 
 		$competition = new Competition();
@@ -109,10 +111,12 @@ class CompetitionController extends Controller
 		
 		$event = $competition->event;
 
-		$event->name 		= $request->name;
-		$event->description = $request->description;
-		$event->start_time	= $request->start_time;
-		$event->end_time	= $request->end_time;
+		$event->name 			= $request->name;
+		$event->name_en 		= $request->name_en;
+		$event->description 	= $request->description;
+		$event->description_en 	= $request->description_en;
+		$event->start_time		= $request->start_time;
+		$event->end_time		= $request->end_time;
 		$event->save();
 
 		$competition->location 		= $request->location;

@@ -8,7 +8,7 @@
 	</div>
 
 	<div class="col-md-3">
-		{!! $post->content !!}...
+		{!! $post->preview('content', 200) !!}...
 	</div>
 
 	<div class="col-md-1">

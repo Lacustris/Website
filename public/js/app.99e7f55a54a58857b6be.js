@@ -79,6 +79,8 @@ __webpack_require__("./resources/assets/js/menu.js");
 __webpack_require__("./resources/assets/js/admin.js");
 __webpack_require__("./resources/assets/js/editor.js");
 __webpack_require__("./resources/assets/js/carousel.js");
+__webpack_require__("./resources/assets/js/notification.js");
+__webpack_require__("./resources/assets/js/events.js");
 
 $(function () {
   // Check if we want this everywhere or only on the pages where it's used
@@ -271,6 +273,28 @@ function Confirm(message, callback) {
 	});
 }
 
+/**
+ * Display information
+ */
+function DisplayInformation(title, body) {
+	if (!CountDialogs('display-information')) {
+		return;
+	}
+
+	var dialog = $('.dialog--display-information');
+
+	$('.dialog--display-information .dialog__title').html(title);
+	$('.dialog--display-information .dialog__body').html(body);
+
+	$('.dialog__button').on('click', function () {
+		$('.dialog__button').unbind('click');
+
+		dialog.hide('slow');
+	});
+
+	dialog.show('slow');
+}
+
 function ImageOverview(callback) {
 	if (!CountDialogs('images')) {
 		return;
@@ -418,7 +442,8 @@ function FetchPreviewImages(dialog, pageIndex, callback) {
 /* harmony default export */ __webpack_exports__["a"] = ({
 	confirm: Confirm,
 	enterURL: EnterURL,
-	imageOverview: ImageOverview
+	imageOverview: ImageOverview,
+	displayInformation: DisplayInformation
 });
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__("./node_modules/jquery/dist/jquery.js")))
 
@@ -505,6 +530,35 @@ $(function () {
 
 /***/ }),
 
+/***/ "./resources/assets/js/events.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function($) {Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dialog__ = __webpack_require__("./resources/assets/js/dialog.js");
+// Import dependencies
+
+
+$(function () {
+	$('[data-action=participants]').on('click', function () {
+		var id = $(this).data('eventid');
+		$.get('/event/participants/' + id, '', function (result) {
+			console.log(result);
+			if (!result.title || !result.participants) {
+				console.error('Incorrect dataset from API!'); // TODO: replace this with proper error loging!
+			}
+			var participants = "";
+			$.each(result.participants, function (id, participant) {
+				participants += participant + "<br>";
+			});
+			__WEBPACK_IMPORTED_MODULE_0__dialog__["a" /* default */].displayInformation(result.title, participants);
+		});
+	});
+});
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__("./node_modules/jquery/dist/jquery.js")))
+
+/***/ }),
+
 /***/ "./resources/assets/js/menu.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -555,6 +609,19 @@ function closeMenus() {
 	$('a[aria-expanded=true]').attr('aria-expanded', 'false');
 }
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__("./node_modules/jquery/dist/jquery.js")))
+
+/***/ }),
+
+/***/ "./resources/assets/js/notification.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function($) {$(function () {
+
+	$('.notification').on('click', function () {
+		$(this).hide('slow');
+	});
+});
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("./node_modules/jquery/dist/jquery.js")))
 
 /***/ }),
 

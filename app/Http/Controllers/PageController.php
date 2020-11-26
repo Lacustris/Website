@@ -9,12 +9,13 @@ use App\Menu;
 class PageController extends Controller
 {
 	/**
-	 * Setup permissions for the controller. Minimum required permission is board member,
+	 * Setup permissions for the controller. Minimum required permission is Content,
 	 * except for the show() method, as it is public
+	 * This is now handles by the routes file
 	 */
 	public function __construct()
 	{
-		$this->middleware(['auth', 'permissions:8'], ['except' => 'show']);
+		//$this->middleware(['auth', 'permissions:7'], ['except' => 'show']);
 	}
 
     public function show(Page $page)
@@ -30,7 +31,7 @@ class PageController extends Controller
 
 	public function index()
 	{
-		$data['pages'] = Page::all(); // TODO: add pagination
+		$data['pages'] = Page::paginate(10); // TODO: add pagination
 
 		return view('admin.pages.index', $data);
 	}

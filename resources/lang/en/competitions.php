@@ -14,7 +14,7 @@ return [
     'pageTitle' 	=> 'Competition Calendar',
 	'date' 			=> 'Date',
 	'competition'	=> 'Competition',
-	'location' 		=> 'location',
-	'organisation' 	=> 'organisation',
-	'participate'	=> 'enroll',
+	'location' 		=> 'Location',
+	'organisation' 	=> 'Organisation',
+	'participate'	=> 'Enroll',
 ];

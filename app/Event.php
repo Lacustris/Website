@@ -7,16 +7,45 @@ use Carbon\Carbon;
 
 class Event extends Model
 {
+	///////////////
+	// CONSTANTS //
+	///////////////
 	const validationRules = [
-		'name' 			=> 'required|max:255',
-		'description' 	=> 'required',
-		'start_time' 	=> 'required|date|after:today',
-		'end_time' 		=> 'required|date|after_or_equal:start_time',
+		'name' 				=> 'required|max:255',
+		'name_en' 			=> 'required|max:255',
+		'description' 		=> 'required',
+		'description_en' 	=> 'required',
+		'start_time' 		=> 'required|date|after:today',
+		'end_time' 			=> 'required|date|after_or_equal:start_time',
 	];
+
+	///////////////
+	// RELATIONS //
+	///////////////
 
 	public function competition()
 	{
 		return $this->hasOne('App\Competition', 'event_id');
+	}
+
+	public function participants()
+	{
+		return $this->hasMany('App\Participant', 'event_id');
+	}
+
+	/////////////
+	// METHODS //
+	/////////////
+
+	public function me()
+	{
+		foreach($this->participants as $participant) {
+			if($participant->me()) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
     public static function upcoming($number)
@@ -99,13 +128,36 @@ class Event extends Model
 	private static function formatTime($time)
 	{
 		$timestamp = Carbon::parse($time);
+		
+		return $timestamp->format('H:i');
+	}
 
-		return $timestamp->format('H:m');
+	public function name()
+	{
+		$locale = \App::getLocale();
+
+		return isset($this->{'name_' . $locale}) ? $this->{'name_' . $locale} : $this->name;
+	}
+
+	public function description()
+	{
+		$locale = \App::getLocale();
+
+		return isset($this->{'description_' . $locale}) ? $this->{'description_' . $locale} : $this->description;
 	}
 
 	private function day()
 	{
 		return Carbon::parse($this->start_time)->day;
+	}
+
+	public function registerable()
+	{
+		return $this->registerable &&
+		(Carbon::now()->diffInSeconds(
+			Carbon::parse($this->start_time),
+			false
+		) > 0);
 	}
 
 	public static function getMonth($month)

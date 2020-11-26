@@ -17,6 +17,10 @@ class Role extends Model
 		'name' => 'user',
 		'admin' => false,
 	],
+	7 => [
+		'name' => 'content',
+		'admin' => true,
+	],
 	8 => [
 		'name' => 'board',
 		'admin' => true,

@@ -14,7 +14,7 @@ return [
     'new' 					=> 'Nieuw',
     'edit' 					=> 'Bewerken',
 	'delete' 				=> 'Verwijderen',
-	'deleteConfirmation' 	=> 'Weet je zeker dat je dit item wilt verwijderen?',
+	'deleteConfirmation' 	=> 'Weet je zeker dat je dit item wilt verwijderen? Deze actie kan niet ongedaan gemaakt worden.',
 	'save'			 		=> 'Opslaan',
 	'crud' 					=> 'Acties',
 	'language' 				=> 'Taal',
@@ -22,6 +22,8 @@ return [
 	'title' 				=> 'Titel',
 	'contents' 				=> 'Inhoud',
 	'optional' 				=> 'Optioneel',
+	'publish' 				=> 'Publiceren',
+	'unpublish' 			=> 'Depubliceren',
 
 	'langEN' => 'Engels',
 	'langNL' => 'Nederlands',
@@ -48,6 +50,9 @@ return [
 	'menuTypeCalendar' 		=> 'Kalender',
 	'menuTypeLink'			=> 'Link',
 	'menuTypeCompetitions'	=> 'Wedstrijdkalender',
+	'menuDelete' 			=> 'Weet je zeker dat je dit item wilt verwijderen?',
+	'menuVisible' 			=> 'Zichbaar',
+	'menuInvisible'			=> 'Onzichtbaar',
 
 	'sponsorAdmin' 	=> 'Sponsor Beheer',
 	'sponsorImage' 	=> 'Logo',

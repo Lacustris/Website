@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Event;
+use App\Participant;
 
 class EventController extends Controller
 {
@@ -73,10 +74,13 @@ class EventController extends Controller
 
 		$event = new Event();
 
-		$event->name 		= $request->name;
-		$event->description = $request->description;
-		$event->start_time	= $request->start_time;
-		$event->end_time	= $request->end_time;
+		$event->name 			= $request->name;
+		$event->name_en 		= $request->name_en;
+		$event->description 	= $request->description;
+		$event->description_en 	= $request->description_en;
+		$event->start_time		= $request->start_time;
+		$event->end_time		= $request->end_time;
+		$event->registerable 	= isset($request->registerable);
 		$event->save();
 
 		return redirect('/admin/events');
@@ -95,14 +99,20 @@ class EventController extends Controller
 		$this->validate($request, Event::validationRules);
 
 		// Save
-		$event->name 		= $request->name;
-		$event->description = $request->description;
-		$event->start_time	= $request->start_time;
-		$event->end_time	= $request->end_time;
+		$event->name 			= $request->name;
+		$event->name_en 		= $request->name_en;
+		$event->description 	= $request->description;
+		$event->description_en	= $request->description_en;
+		$event->start_time		= $request->start_time;
+		$event->end_time		= $request->end_time;
+		$event->registerable 	= isset($request->registerable);
 		$event->save();
 
 		// Redirect
-		return redirect('/admin/events');
+		return redirect('/admin/events')->with('notification', [
+			'type' => 'success',
+			'body' => __( 'admin.saveSuccessful' ),
+		]);
 	}
 
 	public function destroy(Event $event)
@@ -110,5 +120,61 @@ class EventController extends Controller
 		$event->delete();
 
 		return redirect('/admin/events');
+	}
+
+	public function join(Event $event)
+	{
+		// Can't (de)register for past events
+		if(Carbon::now()->diffInSeconds(Carbon::parse($event->start_time), false) < 0) {
+			return redirect('/event/' . $event->id)->with('notification', [
+				'type' => 'error',
+				'body' => __( 'events.pastEventError' ),
+			]);
+		}
+
+		// Can't Register for events that are not registerable
+		if(!$event->registerable) {
+			return redirect('/event/' . $event->id)->with('notification', [
+				'type' => 'error',
+				'body' => __( 'events.notRegisterableError' ),
+			]);
+		}
+
+		// Check whether the user should be registered or deregistered.
+		if($event->me()) {
+			// Stop participating
+			$participant = Participant::where('event_id', $event->id)->where('user_id', \Auth::user()->id)->first();
+			$participant->delete();
+
+			return redirect('/event/' . $event->id)->with('notification', [
+				'type' => 'success',
+				'body' => __( 'events.participateStopSuccessful' ),
+			]);
+		} else {
+			// Participate
+			$participant = new Participant();
+			$participant->user_id = \Auth::user()->id;
+			$participant->event_id = $event->id;
+			$participant->save();
+
+			return redirect('/event/' . $event->id)->with('notification', [
+				'type' => 'success',
+				'body' => __( 'events.participateSuccessful' ),
+			]);
+		}
+
+		// There maybe should be a catch-all case here, but what... Maybe a generic error message?
+	}
+
+	public function participants(Event $event)
+	{
+		$data['title'] 			= __('events.participantsList');
+		$data['participants'] 	= [];
+
+		foreach($event->participants as $participant) {
+			$data['participants'][] = $participant->user->name;
+		}
+		
+		return response()->json($data, 200);
 	}
 }

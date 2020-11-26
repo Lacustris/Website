@@ -13,6 +13,10 @@
 		</div>
 
 		<div class="col-md-2">
+			{!! $item->registerable ? __( 'general.yes' ) . '<br>' . count($item->participants) . ' ' . __( 'events.participants' ) : __( 'general.no' ) !!}
+		</div>
+
+		<div class="col-md-2">
 		<a href="/admin/events/edit/{{ $item->id }}" class="btn btn-default">
 			<i class="fa fa-pencil"></i>
 			{{ __( 'admin.edit' ) }}
@@ -24,5 +28,5 @@
 		<form id="delete_{{ $item->id }}" action="/admin/events/destroy/{{ $item->id }}" method="POST" style="display: none;">
 			{{ csrf_field() }}
 		</form>
-		</div>
+	</div>
 </div>

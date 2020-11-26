@@ -16,6 +16,9 @@ return [
 	'no'		=> 'No',
 	'optional' 	=> 'Optional',
 	'send' 		=> 'Send',
+	'here' 		=> 'Here',
+	'toTop' 	=> 'Back to top',
+	'close' 	=> 'Close',
 
 	'name' 				=> 'Name',
     'email' 			=> 'Email address',

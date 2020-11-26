@@ -26,10 +26,18 @@
 
 		<div class="form-group">
 			<label for="name" class="control-label">
-				{{ __( 'admin.eventTitle' ) }}
+				{{ __( 'admin.eventTitle' ) }} NL
 			</label>
 			
 			<input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required>
+		</div>
+
+		<div class="form-group">
+			<label for="name_en" class="control-label">
+				{{ __( 'admin.eventTitle' ) }} EN
+			</label>
+			
+			<input id="name_en" type="text" class="form-control" name="name_en" value="{{ old('name_en') }}" required>
 		</div>
 
 	</div>
@@ -51,18 +59,42 @@
 			
 			<input id="end_time" type="datetime-local" class="form-control" name="end_time" value="{{ old('end_time') }}" required>
 		</div>
+	</div>
 
-
+	<div class="col-md-5">
+		<div class="form-group">
+			<label class="control-label">
+			{{ __( 'admin.eventRegisterable' ) }}
+			</label>
+			<div class="checkbox">
+				<label for="registerable" class="control-label">
+					<input id="registerable" type="checkbox" name="registerable" value="1">
+					{{ __( 'admin.eventRegisterable' ) }}
+				</label>
+			</div>
+		</div>
 	</div>
 
 	<div class="col-md-12">
 	
 		<div class="form-group">
 			<label for="description">
-				{{ __( 'admin.eventDescription' ) }}
+				{{ __( 'admin.eventDescription' ) }} NL
 			</label>
 
 			@include('layouts.editors.text', [ 'content' => old('description'), 'id' => 'description' ])
+		</div>
+
+	</div>
+
+	<div class="col-md-12">
+	
+		<div class="form-group">
+			<label for="description_en">
+				{{ __( 'admin.eventDescription' ) }} EN
+			</label>
+
+			@include('layouts.editors.text', [ 'content' => old('description_en'), 'id' => 'description_en' ])
 		</div>
 
 	</div>

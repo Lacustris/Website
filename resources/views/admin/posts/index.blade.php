@@ -10,7 +10,7 @@
 
 <h1>{{ __( 'admin.postAdmin' ) }}</h1>
 
-<a href="/admin/posts/create" class="btn btn-default">New</a>
+<a href="/admin/posts/create" class="btn btn-default">{{ __( 'admin.new' ) }}</a>
 
 <div class="admin-group headings">
 	<div class="row">
@@ -47,5 +47,8 @@
 </div>
 
 @endforeach
+<div class="row">
+	<div class="col-md-12">{{ $posts->links() }}</div>
+</div>
 
 @endsection

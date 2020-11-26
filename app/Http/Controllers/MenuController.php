@@ -11,7 +11,8 @@ class MenuController extends Controller
 {
 	public function __construct()
 	{
-		$this->middleware(['auth', 'permissions:8']); // Minimum position: board member
+		// Not used here anymore, handled in routes
+		//$this->middleware(['auth', 'permissions:7']); // Minimum position: Content
 	}
 
     /**
@@ -21,7 +22,7 @@ class MenuController extends Controller
      */
     public function index()
     {
-        $data['menu'] = Menu::getMain();
+        $data['menu'] = Menu::getMain(true);
 		
 		return view('admin.menu.index', $data);
     }
@@ -145,8 +146,64 @@ class MenuController extends Controller
      */
     public function destroy(Menu $menu)
     {
-        $menu->delete();
+		$menu->delete();
+		
+		Menu::normalizeOrder();
 
 		return redirect('/admin/menu');
-    }
+	}
+	
+	public function up(Menu $menu)
+	{
+		if($menu->order == Menu::minOrder($menu->parent_id)) {
+			return redirect('/admin/menu');
+		}
+
+		$neighbor = Menu::where('parent_id', $menu->parent_id)->where('order', '<', $menu->order)->orderBy('order', 'DESC')->first();
+
+		if(!isset($neighbor)) {
+			return redirect('/admin/menu');
+		}
+
+		$temp = $menu->order;
+		$menu->order = $neighbor->order;
+		$menu->save();
+		$neighbor->order = $temp;
+		$neighbor->save();
+
+		Menu::normalizeOrder();
+
+		return redirect('/admin/menu');
+	}
+
+	public function down(Menu $menu)
+	{
+		if($menu->order == Menu::maxOrder($menu->parent_id)) {
+			return redirect('/admin/menu');
+		}
+
+		$neighbor = Menu::where('parent_id', $menu->parent_id)->where('order', '>', $menu->order)->orderBy('order', 'ASC')->first();
+
+		if(!isset($neighbor)) {
+			return redirect('/admin/menu');
+		}
+
+		$temp = $menu->order;
+		$menu->order = $neighbor->order;
+		$menu->save();
+		$neighbor->order = $temp;
+		$neighbor->save();
+
+		Menu::normalizeOrder();
+
+		return redirect('/admin/menu');
+	}
+
+	public function toggleVisibility(Menu $menu)
+	{
+		$menu->visible = !$menu->visible;
+		$menu->save();
+
+		return redirect('/admin/menu');
+	}
 }

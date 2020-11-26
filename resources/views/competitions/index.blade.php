@@ -18,7 +18,7 @@
 	@foreach($competitions as $competition)
 	<tr>
 		<td>{{ $competition->event->startDate(true) }}</td>
-		<td>{{ $competition->event->name }}</td>
+		<td>{{ $competition->event->name() }}</td>
 		<td>{{ $competition->location }}</td>
 		<td>{{ $competition->organisation }}</td>
 		<td>{!! $competition->link() !!}</td>
