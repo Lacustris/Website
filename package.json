@@ -20,7 +20,7 @@
     "jquery": "^3.2.1",
     "laravel-mix": "^0.10.0",
     "lodash": "^4.17.4",
-    "node-sass": "^4.5.2",
+    "node-sass": "^7.0.0",
     "nodemon": "^1.11.0"
   },
   "name": "lacustris",
